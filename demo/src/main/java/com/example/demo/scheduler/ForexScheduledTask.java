@@ -26,7 +26,7 @@ public class ForexScheduledTask {
     @Autowired
     private ForexService forexService;
     
-    @Scheduled(cron = "0 0 18 * * ?")  // 每日晚上六點執行一次
+    @Scheduled(cron = "0 0 18 * * ?", zone = "Asia/Taipei")  // 每日晚上六點執行一次
     public void getOpenApiForexData() {
         try {
             ForexOpenApiDto[] response = apiService.fetchDailyFreRateApi();

@@ -9,8 +9,6 @@ import lombok.Data;
 
 @Data
 public class ForexOpenApiDto {
-  // @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
-  // @JsonDeserialize(using = CustomDateDeserializer.class)
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyyMMdd")
   @JsonProperty("Date")
   private Date date;

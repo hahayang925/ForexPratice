@@ -1,44 +1,25 @@
 package com.example.demo.dto;
 
-import java.time.temporal.ChronoUnit;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-
-import com.example.demo.config.LocalDateDeserializer;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.time.temporal.ChronoUnit;
 
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
 @Data
 public class ForexRequestDto {
   @NotNull
-  // @JsonFormat(pattern = "yyyy/MM/dd")
-  // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
-  // @JsonFormat(pattern = "yyyy/MM/dd")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-  // @JsonDeserialize(using = LocalDateDeserializer.class)
-  // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
-  // @JsonFormat(pattern = "yyyy/MM/dd")
   @JsonProperty("startDate")
   private LocalDate startDate;
   
   @NotNull
-  // @JsonFormat(pattern = "yyyy/MM/dd")
-  // @DateTimeFormat(pattern = "yyyy-MM-dd")]
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-  // @JsonDeserialize(using = CustomDateDeserializer.class)
-  // @JsonDeserialize(using = LocalDateDeserializer.class)
-  // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
-  // @JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
   @JsonProperty("endDate")
   private LocalDate endDate;
 

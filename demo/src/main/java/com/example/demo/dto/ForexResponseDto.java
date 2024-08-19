@@ -9,7 +9,6 @@ import lombok.Data;
 
 @Data
 public class ForexResponseDto {
-  // @JsonFormat(pattern = "yyyyMMdd", timezone = "GMT+8")
   @JsonFormat(pattern = "yyyyMMdd")
   @JsonProperty("date")
   private Date date;
