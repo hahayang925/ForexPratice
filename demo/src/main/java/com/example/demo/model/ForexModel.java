@@ -30,11 +30,16 @@ public class ForexModel {
     @Field("USD/NTD")
     private String usd;
 
+    @NonNull
+    @Field("RMB/NTD")
+    private String rmb;
+
     public ForexModel() {
     }
 
-    public ForexModel(Date date, String usd) {
+    public ForexModel(Date date, String usd, String rmb) {
         this.usd = usd;
+        this.rmb = rmb;
         this.date = date;
     }
 }

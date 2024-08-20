@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.mockito.Mockito.when;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -53,10 +52,10 @@ public class ForexControllerTest {
     @DisplayName("對美元匯率查詢正確")
     public void testGetForexRate() throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        ForexModel mockForexModel = new ForexModel(sdf.parse("2024-08-18"), "31.35");
+        ForexModel mockForexModel = new ForexModel(sdf.parse("2024-08-18"), "31.35", "4.2");
         List<ForexModel> respList= new ArrayList<>();
         respList.add(mockForexModel);
-        when(forexService.findByDateRange(LocalDate.parse("2024-07-01"), LocalDate.parse("2024-08-01"), "usd")).thenReturn(respList);
+        when(forexService.findByDateRangeAndCurrency("2024/07/01", "2024/08/01", "usd")).thenReturn(respList);
 
         Map<String, Object> requestBodyMap = new HashMap<>();
         requestBodyMap.put("startDate", "2024/07/01");
@@ -79,10 +78,10 @@ public class ForexControllerTest {
     @DisplayName("對美元匯率查詢參數錯誤-起始日期小於一年前")
     public void testGetForexRateStartDateBeforeOneYear() throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        ForexModel mockForexModel = new ForexModel(sdf.parse("2024-08-18"), "31.35");
+        ForexModel mockForexModel = new ForexModel(sdf.parse("2024-08-18"), "31.35", "4.2");
         List<ForexModel> respList= new ArrayList<>();
         respList.add(mockForexModel);
-        when(forexService.findByDateRange(LocalDate.parse("2024-07-01"), LocalDate.parse("2024-08-01"), "usd")).thenReturn(respList);
+        when(forexService.findByDateRangeAndCurrency("2024/07/01", "2024/08/01", "usd")).thenReturn(respList);
 
         Map<String, Object> requestBodyMap = new HashMap<>();
         requestBodyMap.put("startDate", "2023/07/01");

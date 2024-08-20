@@ -16,11 +16,15 @@ public class ForexOpenApiDto {
   @JsonProperty("USD/NTD")
   private String usd;
 
+  @JsonProperty("RMB/NTD")
+  private String rmb;
+
   public ForexOpenApiDto() {
   }
 
-  public ForexOpenApiDto(Date date, String usd) {
+  public ForexOpenApiDto(Date date, String usd, String rmb) {
     this.date = date;
     this.usd = usd;
+    this.rmb = rmb;
   }
 }

@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import java.time.LocalDate;
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,21 +13,13 @@ import com.example.demo.repository.ForexRepository;
 public class ForexService {
 
     @Autowired
-    private ForexRepository repository;
+    ForexRepository forexRepository;
 
-    public List<ForexModel> insertForex(List<ForexModel> forexData) {
-        return repository.saveAll(forexData);
+    public void insertForex(List<ForexModel> forexData) {
+        forexRepository.insertAll(forexData);
     }
 
-    public ForexModel findForexDataById(String id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    public void deleteDocument(String id) {
-        repository.deleteById(id);
-    }
-
-    public List<ForexModel> findByDateRange(LocalDate startDate, LocalDate endDate, String currency) {
-        return repository.findByDateRangeAndCurrency(startDate, endDate, currency);
+    public List<ForexModel> findByDateRangeAndCurrency(String startDate, String endDate, String currency) throws ParseException {
+        return forexRepository.findForexByDateRangeAndCurrency(startDate, endDate, currency);
     }
 }

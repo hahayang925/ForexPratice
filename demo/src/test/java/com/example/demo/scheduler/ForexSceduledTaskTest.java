@@ -41,15 +41,15 @@ public class ForexSceduledTaskTest {
   void testScheduledTask() throws ParseException {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
     ForexOpenApiDto[] forexOpenApiDtoList = new ForexOpenApiDto[1];
-    forexOpenApiDtoList[0] = new ForexOpenApiDto(sdf.parse("2024-08-18"), "32.51");
+    forexOpenApiDtoList[0] = new ForexOpenApiDto(sdf.parse("2024-08-18"), "32.51", "4.2");
     when(apiService.fetchDailyFreRateApi()).thenReturn(forexOpenApiDtoList);
 
     List<ForexModel> dataList = new ArrayList<>();
     ForexModel forexModel = new ForexModel();
     forexModel.setDate(forexOpenApiDtoList[0].getDate());
     forexModel.setUsd(forexOpenApiDtoList[0].getUsd());
+    forexModel.setRmb(forexOpenApiDtoList[0].getRmb());
     dataList.add(forexModel);
-    when(forexService.insertForex(dataList)).thenReturn(dataList);
 
     forexSceduledTask.getOpenApiForexData();
 

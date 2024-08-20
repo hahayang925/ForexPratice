@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: demo
+  data:
+    mongodb:
+      uri: mongodb://dbforex:dbforex@localhost:27017/myDatabase

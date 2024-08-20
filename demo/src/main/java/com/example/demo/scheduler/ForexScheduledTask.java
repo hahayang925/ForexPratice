@@ -33,10 +33,10 @@ public class ForexScheduledTask {
             
             List<ForexModel> listData = Arrays.asList(response)
                 .stream()
-                .map(d -> new ForexModel(d.getDate(), d.getUsd()))
+                .map(d -> new ForexModel(d.getDate(), d.getUsd(), d.getRmb()))
                 .collect(Collectors.toList());
     
-            forexService.insertForex(listData);
+                forexService.insertForex(listData);
             
         } catch (Exception e) {
             // TODO: what to do when error occurs
